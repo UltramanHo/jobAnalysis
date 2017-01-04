@@ -1,0 +1,521 @@
+package zju.opc.domain;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class ExceptionExample {
+    protected String orderByClause;
+
+    protected boolean distinct;
+
+    protected List<Criteria> oredCriteria;
+
+    public ExceptionExample() {
+        oredCriteria = new ArrayList<Criteria>();
+    }
+
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
+    }
+
+    public String getOrderByClause() {
+        return orderByClause;
+    }
+
+    public void setDistinct(boolean distinct) {
+        this.distinct = distinct;
+    }
+
+    public boolean isDistinct() {
+        return distinct;
+    }
+
+    public List<Criteria> getOredCriteria() {
+        return oredCriteria;
+    }
+
+    public void or(Criteria criteria) {
+        oredCriteria.add(criteria);
+    }
+
+    public Criteria or() {
+        Criteria criteria = createCriteriaInternal();
+        oredCriteria.add(criteria);
+        return criteria;
+    }
+
+    public Criteria createCriteria() {
+        Criteria criteria = createCriteriaInternal();
+        if (oredCriteria.size() == 0) {
+            oredCriteria.add(criteria);
+        }
+        return criteria;
+    }
+
+    protected Criteria createCriteriaInternal() {
+        Criteria criteria = new Criteria();
+        return criteria;
+    }
+
+    public void clear() {
+        oredCriteria.clear();
+        orderByClause = null;
+        distinct = false;
+    }
+
+    protected abstract static class GeneratedCriteria {
+        protected List<Criterion> criteria;
+
+        protected GeneratedCriteria() {
+            super();
+            criteria = new ArrayList<Criterion>();
+        }
+
+        public boolean isValid() {
+            return criteria.size() > 0;
+        }
+
+        public List<Criterion> getAllCriteria() {
+            return criteria;
+        }
+
+        public List<Criterion> getCriteria() {
+            return criteria;
+        }
+
+        protected void addCriterion(String condition) {
+            if (condition == null) {
+                throw new RuntimeException("Value for condition cannot be null");
+            }
+            criteria.add(new Criterion(condition));
+        }
+
+        protected void addCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value));
+        }
+
+        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        public Criteria andExceptionIdIsNull() {
+            addCriterion("Exception_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdIsNotNull() {
+            addCriterion("Exception_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdEqualTo(Integer value) {
+            addCriterion("Exception_ID =", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdNotEqualTo(Integer value) {
+            addCriterion("Exception_ID <>", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdGreaterThan(Integer value) {
+            addCriterion("Exception_ID >", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("Exception_ID >=", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdLessThan(Integer value) {
+            addCriterion("Exception_ID <", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("Exception_ID <=", value, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdIn(List<Integer> values) {
+            addCriterion("Exception_ID in", values, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdNotIn(List<Integer> values) {
+            addCriterion("Exception_ID not in", values, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdBetween(Integer value1, Integer value2) {
+            addCriterion("Exception_ID between", value1, value2, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("Exception_ID not between", value1, value2, "exceptionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeIsNull() {
+            addCriterion("Exception_Time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeIsNotNull() {
+            addCriterion("Exception_Time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeEqualTo(Date value) {
+            addCriterion("Exception_Time =", value, "exceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeNotEqualTo(Date value) {
+            addCriterion("Exception_Time <>", value, "exceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeGreaterThan(Date value) {
+            addCriterion("Exception_Time >", value, "exceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("Exception_Time >=", value, "exceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeLessThan(Date value) {
+            addCriterion("Exception_Time <", value, "exceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeLessThanOrEqualTo(Date value) {
+            addCriterion("Exception_Time <=", value, "exceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeIn(List<Date> values) {
+            addCriterion("Exception_Time in", values, "exceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeNotIn(List<Date> values) {
+            addCriterion("Exception_Time not in", values, "exceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeBetween(Date value1, Date value2) {
+            addCriterion("Exception_Time between", value1, value2, "exceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionTimeNotBetween(Date value1, Date value2) {
+            addCriterion("Exception_Time not between", value1, value2, "exceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameIsNull() {
+            addCriterion("Exception_Name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameIsNotNull() {
+            addCriterion("Exception_Name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameEqualTo(String value) {
+            addCriterion("Exception_Name =", value, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameNotEqualTo(String value) {
+            addCriterion("Exception_Name <>", value, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameGreaterThan(String value) {
+            addCriterion("Exception_Name >", value, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameGreaterThanOrEqualTo(String value) {
+            addCriterion("Exception_Name >=", value, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameLessThan(String value) {
+            addCriterion("Exception_Name <", value, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameLessThanOrEqualTo(String value) {
+            addCriterion("Exception_Name <=", value, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameLike(String value) {
+            addCriterion("Exception_Name like", value, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameNotLike(String value) {
+            addCriterion("Exception_Name not like", value, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameIn(List<String> values) {
+            addCriterion("Exception_Name in", values, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameNotIn(List<String> values) {
+            addCriterion("Exception_Name not in", values, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameBetween(String value1, String value2) {
+            addCriterion("Exception_Name between", value1, value2, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionNameNotBetween(String value1, String value2) {
+            addCriterion("Exception_Name not between", value1, value2, "exceptionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailIsNull() {
+            addCriterion("Exception_Detail is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailIsNotNull() {
+            addCriterion("Exception_Detail is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailEqualTo(String value) {
+            addCriterion("Exception_Detail =", value, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailNotEqualTo(String value) {
+            addCriterion("Exception_Detail <>", value, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailGreaterThan(String value) {
+            addCriterion("Exception_Detail >", value, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailGreaterThanOrEqualTo(String value) {
+            addCriterion("Exception_Detail >=", value, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailLessThan(String value) {
+            addCriterion("Exception_Detail <", value, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailLessThanOrEqualTo(String value) {
+            addCriterion("Exception_Detail <=", value, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailLike(String value) {
+            addCriterion("Exception_Detail like", value, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailNotLike(String value) {
+            addCriterion("Exception_Detail not like", value, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailIn(List<String> values) {
+            addCriterion("Exception_Detail in", values, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailNotIn(List<String> values) {
+            addCriterion("Exception_Detail not in", values, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailBetween(String value1, String value2) {
+            addCriterion("Exception_Detail between", value1, value2, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionDetailNotBetween(String value1, String value2) {
+            addCriterion("Exception_Detail not between", value1, value2, "exceptionDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdIsNull() {
+            addCriterion("Machine_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdIsNotNull() {
+            addCriterion("Machine_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdEqualTo(Integer value) {
+            addCriterion("Machine_ID =", value, "machineId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdNotEqualTo(Integer value) {
+            addCriterion("Machine_ID <>", value, "machineId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdGreaterThan(Integer value) {
+            addCriterion("Machine_ID >", value, "machineId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("Machine_ID >=", value, "machineId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdLessThan(Integer value) {
+            addCriterion("Machine_ID <", value, "machineId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdLessThanOrEqualTo(Integer value) {
+            addCriterion("Machine_ID <=", value, "machineId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdIn(List<Integer> values) {
+            addCriterion("Machine_ID in", values, "machineId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdNotIn(List<Integer> values) {
+            addCriterion("Machine_ID not in", values, "machineId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdBetween(Integer value1, Integer value2) {
+            addCriterion("Machine_ID between", value1, value2, "machineId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMachineIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("Machine_ID not between", value1, value2, "machineId");
+            return (Criteria) this;
+        }
+    }
+
+    public static class Criteria extends GeneratedCriteria {
+
+        protected Criteria() {
+            super();
+        }
+    }
+
+    public static class Criterion {
+        private String condition;
+
+        private Object value;
+
+        private Object secondValue;
+
+        private boolean noValue;
+
+        private boolean singleValue;
+
+        private boolean betweenValue;
+
+        private boolean listValue;
+
+        private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
+
+        protected Criterion(String condition) {
+            super();
+            this.condition = condition;
+            this.typeHandler = null;
+            this.noValue = true;
+        }
+
+        protected Criterion(String condition, Object value, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.typeHandler = typeHandler;
+            if (value instanceof List<?>) {
+                this.listValue = true;
+            } else {
+                this.singleValue = true;
+            }
+        }
+
+        protected Criterion(String condition, Object value) {
+            this(condition, value, null);
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.secondValue = secondValue;
+            this.typeHandler = typeHandler;
+            this.betweenValue = true;
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue) {
+            this(condition, value, secondValue, null);
+        }
+    }
+}

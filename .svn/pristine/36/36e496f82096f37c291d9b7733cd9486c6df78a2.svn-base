@@ -1,0 +1,14 @@
+package zju.opc.mapper;
+
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import zju.opc.domain.User;
+import zju.opc.domain.UserCustom;
+import zju.opc.domain.UserExample;
+import zju.opc.domain.UserQueryVo;
+
+public interface UserMapperCustom {
+    public List<UserCustom> findUserList(UserQueryVo userQueryVo) throws Exception;
+    
+    public UserCustom findUser(UserQueryVo userQueryVo) throws Exception;
+}

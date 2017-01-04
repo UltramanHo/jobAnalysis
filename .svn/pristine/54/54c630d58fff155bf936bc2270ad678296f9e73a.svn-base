@@ -1,0 +1,65 @@
+package zju.opc.domain;
+
+import java.util.Date;
+
+public class Item {
+    private Integer itemId;
+
+    private String itemName;
+
+    private String itemValue;
+
+    private Date insertTime;
+
+    private String moduleName;
+
+    private Integer machineId;
+
+    public Integer getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName == null ? null : itemName.trim();
+    }
+
+    public String getItemValue() {
+        return itemValue;
+    }
+
+    public void setItemValue(String itemValue) {
+        this.itemValue = itemValue == null ? null : itemValue.trim();
+    }
+
+    public Date getInsertTime() {
+        return insertTime;
+    }
+
+    public void setInsertTime(Date insertTime) {
+        this.insertTime = insertTime;
+    }
+
+    public String getModuleName() {
+        return moduleName;
+    }
+
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName == null ? null : moduleName.trim();
+    }
+
+    public Integer getMachineId() {
+        return machineId;
+    }
+
+    public void setMachineId(Integer machineId) {
+        this.machineId = machineId;
+    }
+}

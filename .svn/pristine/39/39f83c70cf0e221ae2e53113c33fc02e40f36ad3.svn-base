@@ -1,0 +1,30 @@
+package zju.opc.mapper;
+
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import zju.opc.domain.Machinegroup;
+import zju.opc.domain.MachinegroupExample;
+
+public interface MachinegroupMapper {
+    int countByExample(MachinegroupExample example);
+
+    int deleteByExample(MachinegroupExample example);
+
+    int deleteByPrimaryKey(Integer groupId);
+
+    int insert(Machinegroup record);
+
+    int insertSelective(Machinegroup record);
+
+    List<Machinegroup> selectByExample(MachinegroupExample example);
+
+    Machinegroup selectByPrimaryKey(Integer groupId);
+
+    int updateByExampleSelective(@Param("record") Machinegroup record, @Param("example") MachinegroupExample example);
+
+    int updateByExample(@Param("record") Machinegroup record, @Param("example") MachinegroupExample example);
+
+    int updateByPrimaryKeySelective(Machinegroup record);
+
+    int updateByPrimaryKey(Machinegroup record);
+}

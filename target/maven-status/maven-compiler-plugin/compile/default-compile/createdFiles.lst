@@ -1,0 +1,4 @@
+zju\jobs\service\impl\UserServiceImpl.class
+zju\jobs\domain\User.class
+zju\jobs\controller\UserController.class
+zju\jobs\service\UserService.class

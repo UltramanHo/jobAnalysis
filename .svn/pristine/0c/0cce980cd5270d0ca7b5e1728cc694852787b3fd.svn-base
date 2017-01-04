@@ -1,0 +1,53 @@
+package zju.opc.domain;
+
+public class Machine {
+    private Integer machineId;
+
+    private Integer itemId;
+
+    private String machineName;
+
+    private String manufacturer;
+
+    private Integer groupId;
+
+    public Integer getMachineId() {
+        return machineId;
+    }
+
+    public void setMachineId(Integer machineId) {
+        this.machineId = machineId;
+    }
+
+    public Integer getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
+    }
+
+    public String getMachineName() {
+        return machineName;
+    }
+
+    public void setMachineName(String machineName) {
+        this.machineName = machineName == null ? null : machineName.trim();
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer == null ? null : manufacturer.trim();
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
+}
