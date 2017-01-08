@@ -14,5 +14,6 @@
 		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<bean id="userService" class="zju.jobs.service.impl.UserServiceImpl"/>
+	<bean id="RequirementService" class="zju.jobs.service.impl.RequirementServiceImpl"/>
 	
 </beans>

@@ -53,12 +53,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle fui-gear" data-toggle="dropdown"> 个人设置<b class="caret"></b></a>
+              <a href="main.jsp" class="dropdown-toggle fui-gear" data-toggle="dropdown"> 个人设置<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#" data-toggle="modal" >个人信息</a></li>
                 <li><a href="findPass.html">修改密码</a></li>
                 <li class="divider"></li>
-                <li><a href="logout.action">退出</a></li>
+                <li><a href="login.html">退出</a></li>
               </ul>
             </li>
           </ul>
@@ -70,8 +70,8 @@
       <div class="row">
         <div class="col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li ><a class="fui-user">职位统计</a></li>
-            	<li class="active"><a href="jobsRequirements.jsp">职位需求</a></li>
+            <li ><a href="main.jsp" class="fui-user">职位统计</a></li>
+            	<li class="active"><a href="jobsByRequirements.jsp">职位需求</a></li>
                 <li><a href="jobsBySalaries.jsp">薪水情况</a></li>
                 <li><a href="aluminees.jsp">校友人才分布</a></li>
           </ul>
@@ -79,7 +79,7 @@
             <li class="active"><a class="fui-gear"> 设置</a></li>
             <li><a href="#">个人信息</a></li>
             <li><a href="findPass.html">修改密码</a></li>
-            <li><a href="logout.action">退出</a></li>
+            <li><a href="login.html">退出</a></li>
           </ul>
         </div>
         
@@ -96,11 +96,29 @@
           <div class="jumbotron">
            <div class="row-fluid">
 		      <div class="page-header">
-		        <h5 ><font color="#1abc9c">按照技术统计职位需求</font></h5>
+		        <h5 ><font color="#1abc9c">按照公司统计职位需求</font></h5>
 		      </div>
 		      <div id="graph2" style="height:300px"></div>
            </div>
           </div>
+          
+          <div class="jumbotron">
+	           <div class="row-fluid">
+			      <div class="page-header">
+			        <h5 ><font color="#1abc9c">按照学历要求统计职位需求</font></h5>
+			      </div>
+			      <div id="graph3" style="height:300px"></div>
+	           </div>
+        </div>
+        
+        <div class="jumbotron">
+	           <div class="row-fluid">
+			      <div class="page-header">
+			        <h5 ><font color="#1abc9c">按照城市统计职位需求</font></h5>
+			      </div>
+			      <div id="graph4" style="height:300px"></div>
+	           </div>
+        </div>
         </div>     
       </div>
   </div>
@@ -113,109 +131,224 @@
     <script src="js/application.js"></script>
     <script src="js/echarts-all.js"></script>
     <script type="text/javascript">
-    var myChart = echarts.init(document.getElementById('graph1')); 
-    var myChart2 = echarts.init(document.getElementById('graph2'));
-    var option = {
-            tooltip: {
-                show: true
-            },
-            legend: {
-                data:['销量']
-            },
-            xAxis : [
-                {
-                    type : 'category',
-                    data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-                }
-            ],
-            yAxis : [
-                {
-                    type : 'value'
-                }
-            ],
-            series : [
-                {
-                    "name":"销量",
-                    "type":"bar",
-                    "data":[5, 20, 40, 10, 10, 20]
-                }
-            ]
-        };
+    //启动前获取所有的数据
+    var data1forGraph1 = []
+    var data2forGraph1 = []
+    var data1forGraph2 = []
+    var data2forGraph2 = []
+    var data1forGraph3 = []
+    var data2forGraph3 = []
+    var data1forGraph4 = []
+    var data2forGraph4 = []
+    $(document).ready(function(){
+      //初始化第一张表
+	  getDataforGraph1()
+	  var myChart = echarts.init(document.getElementById('graph1'));
+	  var option = {
+	            tooltip: {
+	                show: true
+	            },
+	            legend: {
+	                data:['职位需求']
+	            },
+	            xAxis : [
+	                {
+	                    type : 'category',
+	                    data : data1forGraph1
+	                }
+	            ],
+	            yAxis : [
+	                {
+	                    type : 'value'
+	                }
+	            ],
+	            series : [
+	                {
+	                    "name":"职位需求",
+	                    "type":"bar",
+	                    "data":data2forGraph1
+	                }
+	            ]
+	        };
+	  
+	  myChart.setOption(option); 
+	  //初始化第二张表
+	  getDataforGraph2()
+	  var myChart2 = echarts.init(document.getElementById('graph2'));
+	  
+	  var option2 = {
+	            tooltip: {
+	                show: true
+	            },
+	            legend: {
+	                data:['职位需求']
+	            },
+	            xAxis : [
+	                {
+	                    type : 'category',
+	                    data : data1forGraph2
+	                }
+	            ],
+	            yAxis : [
+	                {
+	                    type : 'value'
+	                }
+	            ],
+	            series : [
+	                {
+	                    "name":"职位需求",
+	                    "type":"bar",
+	                    "data":data2forGraph2
+	                }
+	            ]
+	        };
+	  myChart2.setOption(option2);
+	  
+	 //初始化第三张表
+	 getDataforGraph3()
+	  var myChart3 = echarts.init(document.getElementById('graph3'));
+	 
+	  var option3 = {
+	            tooltip: {
+	                show: true
+	            },
+	            legend: {
+	                data:['职位需求']
+	            },
+	            xAxis : [
+	                {
+	                    type : 'category',
+	                    data : data1forGraph3
+	                }
+	            ],
+	            yAxis : [
+	                {
+	                    type : 'value'
+	                }
+	            ],
+	            series : [
+	                {
+	                    "name":"职位需求",
+	                    "type":"bar",
+	                    "data":data2forGraph3
+	                }
+	            ]
+	        };
+	  myChart3.setOption(option3);
+	  
+	//初始化第四张表
+	  getDataforGraph4()
+	  var myChart4 = echarts.init(document.getElementById('graph4'));
+	 
+	  var option4 = {
+	            tooltip: {
+	                show: true
+	            },
+	            legend: {
+	                data:['职位需求']
+	            },
+	            xAxis : [
+	                {
+	                    type : 'category',
+	                    data : data1forGraph4
+	                }
+	            ],
+	            yAxis : [
+	                {
+	                    type : 'value'
+	                }
+	            ],
+	            series : [
+	                {
+	                    "name":"职位需求",
+	                    "type":"bar",
+	                    "data":data2forGraph4
+	                }
+	            ]
+	        };
+	  myChart4.setOption(option4);  
+	});
     
-    var option2 = {
-    	    title : {
-    	        text: '未来一周气温变化',
-    	        subtext: '纯属虚构'
-    	    },
-    	    tooltip : {
-    	        trigger: 'axis'
-    	    },
-    	    legend: {
-    	        data:['最高气温','最低气温']
-    	    },
-    	    toolbox: {
-    	        show : true,
-    	        feature : {
-    	            mark : {show: true},
-    	            dataView : {show: true, readOnly: false},
-    	            magicType : {show: true, type: ['line', 'bar']},
-    	            restore : {show: true},
-    	            saveAsImage : {show: true}
-    	        }
-    	    },
-    	    calculable : true,
-    	    xAxis : [
-    	        {
-    	            type : 'category',
-    	            boundaryGap : false,
-    	            data : ['周一','周二','周三','周四','周五','周六','周日']
-    	        }
-    	    ],
-    	    yAxis : [
-    	        {
-    	            type : 'value',
-    	            axisLabel : {
-    	                formatter: '{value} °C'
-    	            }
-    	        }
-    	    ],
-    	    series : [
-    	        {
-    	            name:'最高气温',
-    	            type:'line',
-    	            data:[11, 11, 15, 13, 12, 13, 10],
-    	            markPoint : {
-    	                data : [
-    	                    {type : 'max', name: '最大值'},
-    	                    {type : 'min', name: '最小值'}
-    	                ]
-    	            },
-    	            markLine : {
-    	                data : [
-    	                    {type : 'average', name: '平均值'}
-    	                ]
-    	            }
-    	        },
-    	        {
-    	            name:'最低气温',
-    	            type:'line',
-    	            data:[1, -2, 2, 5, 3, 2, 0],
-    	            markPoint : {
-    	                data : [
-    	                    {name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
-    	                ]
-    	            },
-    	            markLine : {
-    	                data : [
-    	                    {type : 'average', name : '平均值'}
-    	                ]
-    	            }
-    	        }
-    	    ]
-    	};
+    function getDataforGraph1(){
+	  $.ajax({
+	   		  url: "http://localhost:8080/jobAnalysis/getPositionsBykinds.action",
+	   		  dataType: 'jsonp',
+	   		  jsonp:'jsoncallback',
+	   		  type: 'get',
+	   		  async:false,
+	   		  success:function(data){
+	   			 
+	   			  $.each(data,function(i,item){
+	   				data1forGraph1.push(item.indices) 
+	   				data2forGraph1.push(item.requirements)
+	   			  });
+	   		  },
+	   		  error:function(XMLHttpRequest, textStatus, errorThrown){
+	   			  alert(errorThrown)
+	   		  }
+	   	     });
+    }
     
-    myChart.setOption(option); 
-    myChart2.setOption(option2);
+    function getDataforGraph2(){
+	   	$.ajax({
+	   		  url: "http://localhost:8080/jobAnalysis/getPositionsBycompany.action",
+	   		  dataType: 'jsonp',
+	   		  jsonp:'jsoncallback',
+	   		  type: 'get',
+	   		  async:false,
+	   		  success:function(data){
+	
+	   			  $.each(data,function(i,item){
+	   				data1forGraph2.push(item.indices) 
+	   				data2forGraph2.push(item.requirements)
+	   			  });
+	   		  },
+	   		  error:function(XMLHttpRequest, textStatus, errorThrown){
+	   			  alert(errorThrown)
+	   		  }
+	   	     });
+    }
+    
+    function getDataforGraph3(){
+    	$.ajax({
+	   		  url: "http://localhost:8080/jobAnalysis/getPositionsByeducation.action",
+	   		  dataType: 'jsonp',
+	   		  jsonp:'jsoncallback',
+	   		  type: 'get',
+	   		  async:false,
+	   		  success:function(data){
+	   			  
+	   			  $.each(data,function(i,item){
+	   				data1forGraph3.push(item.indices) 
+	   				data2forGraph3.push(item.requirements)
+	   			  });
+	   		  },
+	   		  error:function(XMLHttpRequest, textStatus, errorThrown){
+	   			  alert(errorThrown)
+	   		  }
+	   	     });
+    }
+    
+    function getDataforGraph4(){
+    	$.ajax({
+	   		  url: "http://localhost:8080/jobAnalysis/getPositionsBycity.action",
+	   		  dataType: 'jsonp',
+	   		  jsonp:'jsoncallback',
+	   		  type: 'get',
+	   		  async:false,
+	   		  success:function(data){
+	   			  
+	   			  $.each(data,function(i,item){
+	   				data1forGraph4.push(item.indices) 
+	   				data2forGraph4.push(item.requirements)
+	   			  });
+	   		  },
+	   		  error:function(XMLHttpRequest, textStatus, errorThrown){
+	   			  alert(errorThrown)
+	   		  }
+	   	     });
+    }
+     
     </script>
   </body>
 </html>

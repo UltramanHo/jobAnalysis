@@ -53,12 +53,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle fui-gear" data-toggle="dropdown"> 个人设置<b class="caret"></b></a>
+              <a href="main.jsp" class="dropdown-toggle fui-gear" data-toggle="dropdown"> 个人设置<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#" data-toggle="modal" >个人信息</a></li>
                 <li><a href="findPass.html">修改密码</a></li>
                 <li class="divider"></li>
-                <li><a href="logout.action">退出</a></li>
+                <li><a href="login.html">退出</a></li>
               </ul>
             </li>
           </ul>
@@ -70,7 +70,7 @@
       <div class="row">
         <div class="col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li ><a class="fui-user">职位统计</a></li>
+            <li ><a href="main.jsp" class="fui-user">职位统计</a></li>
             	<li><a href="jobsByRequirements.jsp">职位需求</a></li>
                 <li class="active"><a href="jobsBySalaries.jsp">薪水情况</a></li>
                 <li><a href="aluminees.jsp">校友人才分布</a></li>
@@ -79,7 +79,7 @@
             <li class="active"><a class="fui-gear"> 设置</a></li>
             <li><a href="#">个人信息</a></li>
             <li><a href="findPass.html">修改密码</a></li>
-            <li><a href="logout.action">退出</a></li>
+            <li><a href="login.html">退出</a></li>
           </ul>
         </div>
         
