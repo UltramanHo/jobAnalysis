@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="zju.jobs.mapper.PositionMapper">  
+    
+    <!-- 根据职位类型统计职位需求 -->  
+    <select id="getPositionsBykinds"  resultType="zju.jobs.domain.Result">  
+        select DISTINCT secondType as indices,COUNT(*) as requirements from DataByCompany GROUP BY secondType ORDER BY requirements DESC;   
+    </select> 
+    
+    <!-- 根据公司名称统计职位需求 -->  
+    <select id="getPositionsBycompany"  resultType="zju.jobs.domain.Result">  
+        select DISTINCT companyShortName as indices,COUNT(*) as requirements from DataByCompany GROUP BY companyShortName ORDER BY requirements DESC;   
+    </select>
+    
+     <!-- 根据学历要求统计职位需求 -->  
+    <select id="getPositionsByeducation"  resultType="zju.jobs.domain.Result">  
+       select DISTINCT education as indices,COUNT(*) as requirements from DataByCompany GROUP BY education ORDER BY requirements DESC;  
+    </select>
+    
+     <!-- 根据城市统计职位需求 -->  
+    <select id="getPositionsBycity"  resultType="zju.jobs.domain.Result">  
+       select DISTINCT city as indices,COUNT(*) as requirements from DataByCompany GROUP BY city ORDER BY requirements DESC;  
+    </select> 
+
+    <!-- 根据领域统计薪水情况 -->  
+    <select id="getSalariesByfields"  resultType="zju.jobs.domain.Result">  
+        select DISTINCT industryField as indices,ROUND(AVG(maxSalary),1) as requirements,ROUND(AVG(minSalary),1) as requirements2 from DataByCompany GROUP BY industryField ORDER BY requirements DESC;
+    </select> 
+    
+    <!-- 根据职位类型统计薪水情况 -->  
+    <select id="getSalariesBykinds"  resultType="zju.jobs.domain.Result">  
+        select DISTINCT secondType as indices,ROUND(AVG(maxSalary),1) as requirements,ROUND(AVG(minSalary),1) as requirements2 from DataByCompany GROUP BY secondType ORDER BY requirements DESC;   
+    </select>
+    
+     <!-- 根据资历统计薪水情况 -->  
+    <select id="getSalariesByyear"  resultType="zju.jobs.domain.Result">  
+       select DISTINCT workYear as indices,ROUND(AVG(maxSalary),1) as requirements,ROUND(AVG(minSalary),1) as requirements2 from DataByCompany GROUP BY workYear ORDER BY requirements DESC;  
+    </select>
+    
+     <!-- 根据城市统计薪水情况 -->  
+    <select id="getSalariesBycity"  resultType="zju.jobs.domain.Result">  
+       select DISTINCT city as indices,ROUND(AVG(maxSalary),1) as requirements,ROUND(AVG(minSalary),1) as requirements2 from DataByCompany GROUP BY city ORDER BY requirements DESC;  
+    </select>             
+</mapper>  
