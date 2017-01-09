@@ -25,7 +25,7 @@
   <body>
     <style>
       body {
-        min-height: 2000px;
+        min-height: 800px;
         padding-top: 53px;
       }
     </style>
@@ -89,39 +89,18 @@
 		      <div class="page-header">
 		        <h5 ><font color="#1abc9c">按照工作城市统计人才分布</font></h5>
 		      </div>
-		      <div id="graph1" style="height:300px"></div>
+		      <div id="graph1" style="height:400px"></div>
            </div>
           </div>
           
           <div class="jumbotron">
            <div class="row-fluid">
 		      <div class="page-header">
-		        <h5 ><font color="#1abc9c">按照公司规模统计人才分布</font></h5>
+		        <h5 ><font color="#1abc9c">按照公司统计人才分布</font></h5>
 		      </div>
-		      <div id="graph2" style="height:300px"></div>
+		      <div id="graph2" style="height:400px"></div>
            </div>
           </div>
-          
-          <div class="jumbotron">
-           <div class="row-fluid">
-		      <div class="page-header">
-		        <h5 ><font color="#1abc9c">按照职位类别统计人才分布</font></h5>
-		      </div>
-		      <div id="graph3" style="height:300px"></div>
-           </div>
-          </div>
-          
-          <div class="jumbotron">
-           <div class="row-fluid">
-		      <div class="page-header">
-		        <h5 ><font color="#1abc9c">按照领域统计人才分布</font></h5>
-		      </div>
-		      <div id="graph4" style="height:300px"></div>
-           </div>
-          </div>
-        </div>     
-      </div>
-  </div>
  <!-- /container -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -133,111 +112,124 @@
     <script type="text/javascript">
     var myChart = echarts.init(document.getElementById('graph1')); 
     var myChart2 = echarts.init(document.getElementById('graph2'));
-    var myChart3 = echarts.init(document.getElementById('graph3'));
-    var myChart4 = echarts.init(document.getElementById('graph4'));
     var option = {
-            tooltip: {
-                show: true
-            },
-            legend: {
-                data:['销量']
-            },
-            xAxis : [
-                {
-                    type : 'category',
-                    data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-                }
-            ],
-            yAxis : [
-                {
-                    type : 'value'
-                }
-            ],
-            series : [
-                {
-                    "name":"销量",
-                    "type":"bar",
-                    "data":[5, 20, 40, 10, 10, 20]
-                }
-            ]
-        };
-    
-    var option2 = {
     	    title : {
-    	        text: '未来一周气温变化',
-    	        subtext: '纯属虚构'
+    	        text: '2014年浙大软件学院人才去向城市统计',
+    	        x:'left'
     	    },
     	    tooltip : {
-    	        trigger: 'axis'
-    	    },
-    	    legend: {
-    	        data:['最高气温','最低气温']
+    	        trigger: 'item',
+    	        formatter: "{a} <br/>{b} : {c} ({d}%)"
     	    },
     	    toolbox: {
     	        show : true,
     	        feature : {
     	            mark : {show: true},
     	            dataView : {show: true, readOnly: false},
-    	            magicType : {show: true, type: ['line', 'bar']},
+    	            magicType : {
+    	                show: true, 
+    	                type: ['pie', 'funnel'],
+    	                option: {
+    	                    funnel: {
+    	                        x: '25%',
+    	                        width: '50%',
+    	                        funnelAlign: 'left',
+    	                        max: 1548
+    	                    }
+    	                }
+    	            },
     	            restore : {show: true},
     	            saveAsImage : {show: true}
     	        }
     	    },
     	    calculable : true,
-    	    xAxis : [
-    	        {
-    	            type : 'category',
-    	            boundaryGap : false,
-    	            data : ['周一','周二','周三','周四','周五','周六','周日']
-    	        }
-    	    ],
-    	    yAxis : [
-    	        {
-    	            type : 'value',
-    	            axisLabel : {
-    	                formatter: '{value} °C'
-    	            }
-    	        }
-    	    ],
     	    series : [
     	        {
-    	            name:'最高气温',
-    	            type:'line',
-    	            data:[11, 11, 15, 13, 12, 13, 10],
-    	            markPoint : {
-    	                data : [
-    	                    {type : 'max', name: '最大值'},
-    	                    {type : 'min', name: '最小值'}
-    	                ]
-    	            },
-    	            markLine : {
-    	                data : [
-    	                    {type : 'average', name: '平均值'}
-    	                ]
-    	            }
-    	        },
-    	        {
-    	            name:'最低气温',
-    	            type:'line',
-    	            data:[1, -2, 2, 5, 3, 2, 0],
-    	            markPoint : {
-    	                data : [
-    	                    {name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
-    	                ]
-    	            },
-    	            markLine : {
-    	                data : [
-    	                    {type : 'average', name : '平均值'}
-    	                ]
-    	            }
+    	            name:'城市',
+    	            type:'pie',
+    	            radius : '55%',
+    	            center: ['50%', '60%'],
+    	            data:[
+    	                {value:172, name:'浙江'},
+    	                {value:70, name:'上海'},
+    	                {value:36, name:'北京'},
+    	                {value:23, name:'广东'},
+    	                {value:15, name:'江苏'},
+    	                {value:15, name:'其他'}
+    	            ]
     	        }
     	    ]
     	};
+    var option2 = {
+    	    color : [
+    	        'rgba(255, 69, 0, 0.5)',
+    	        'rgba(255, 150, 0, 0.5)',
+    	        'rgba(255, 200, 0, 0.5)',
+    	        'rgba(155, 200, 50, 0.5)',
+    	        'rgba(55, 200, 100, 0.5)'
+    	    ],
+    	    title : {
+    	        text: '2014年浙大软件学院人才去向公司统计',
+    	    },
+    	    
+    	    toolbox: {
+    	        show : true,
+    	        feature : {
+    	            mark : {show: true},
+    	            dataView : {show: true, readOnly: false},
+    	            restore : {show: true},
+    	            saveAsImage : {show: true}
+    	        }
+    	    },
+    	    calculable : true,
+    	    series : [
+    	 
+    	              {
+    	                  name:'公司',
+    	                  type:'funnel',
+    	                  x: '-5%',
+    	                  width: '80%',
+    	                  maxSize: '300%',
+    	                  itemStyle: {
+    	                      normal: {
+    	                          label: {
+    	                              formatter: '{b}'
+    	                          },
+    	                          labelLine: {
+    	                              show : false
+    	                          }
+    	                      },
+    	                      emphasis: {
+    	                          label: {
+    	                              position:'inside',
+    	                              formatter: '{b}公司 : {c}人'
+    	                          }
+    	                      }
+    	                  },
+    	                  data:[
+    	      	                {value:21, name:'阿里巴巴'},
+    	      	                {value:16, name:'华为'},
+    	      	                {value:12, name:'网易'},
+    	      	                {value:10, name:'百度'},
+    	      	                {value:9, name:'腾讯&杭州华三通信技术有限公司&SAP'} ,
+    	      	                {value:8, name:'IBM'},
+    	      	                {value:5, name:'广东佳邦信息咨询有限公司&宁波智慧物流科技有限公司'} ,
+    	      	                {value:4, name:'大众点评&中国移动通信集团&中国工商银行股份有限公司'} ,
+    	      	                {value:3, name:'京东&思科系统（中国）研发有限公司&新浪微博'},
+    	      	                {value:2, name:'微策略软件（杭州) 有限公司&中国银行&携程计算机技术（上海）有限公司'},
+    	      	                
+    	      	            ]
+    	              },
+    	          
+    	        
+    	    ]
+    	};
+    	                    
+    	                    
     
     myChart.setOption(option); 
     myChart2.setOption(option2);
-    myChart3.setOption(option2);
-    myChart4.setOption(option2);
+   
     </script>
   </body>
 </html>

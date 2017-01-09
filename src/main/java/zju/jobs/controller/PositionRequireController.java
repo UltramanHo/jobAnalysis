@@ -62,4 +62,25 @@ public class PositionRequireController {
 			return josnStr;
 		}
 
+	@RequestMapping(value="/getEmploymentBycity", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String getEmploymentBycity(HttpServletRequest request) throws Exception {
+			
+			List<Result> list = requirementService.getEmploymentBycity();
+			String json = JSON.toJSONString(list);
+			String jsonCallback = request.getParameter("jsoncallback");
+			String josnStr = jsonCallback + "(" + json + ")";
+			return josnStr;
+		}
+	@RequestMapping(value="/getEmploymentBycompany", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String getEmploymentBycompany(HttpServletRequest request) throws Exception {
+			
+			List<Result> list = requirementService.getEmploymentBycompany();
+			String json = JSON.toJSONString(list);
+			String jsonCallback = request.getParameter("jsoncallback");
+			String josnStr = jsonCallback + "(" + json + ")";
+			return josnStr;
+		}
+	
 }

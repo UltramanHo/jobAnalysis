@@ -36,10 +36,24 @@ public class RequirementServiceImpl implements RequirementService {
 	}
 
 	@Override
-	public List<Result> getPositionsBycity() {
+	public List<Result> getEmploymentBycity() {
+		
+		List<Result> resultList = positionMapper.getEmploymentBycity();
+		return resultList;
+	}
+	@Override
+	public List<Result> getEmploymentBycompany() {
+		
+		List<Result> resultList = positionMapper.getEmploymentBycompany();
+		return resultList;
+	}
+
+	@Override
+    public List<Result> getPositionsBycity() {
 		
 		List<Result> resultList = positionMapper.getPositionsBycity();
 		return resultList;
 	}
+
 
 }

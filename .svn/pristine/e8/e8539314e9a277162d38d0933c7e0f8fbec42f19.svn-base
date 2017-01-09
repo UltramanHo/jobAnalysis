@@ -1,5 +1,0 @@
-package zju.opc.domain;
-
-public class UserCustom extends User{
-	
-}

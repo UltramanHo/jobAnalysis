@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>互联网行业分析系统</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link href="css/login.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="../bootstrap/assets/js/html5shiv.js"></script>
+    <![endif]-->
+<script type="text/javascript" language="javascript">
+	//根据浏览器的不同创建不同的XMLHttpRequest
+	 function createXmlHttpRequest(){
+	 var xmlreq=false;
+	 if(window.XMLHttpRequest){
+	 xmlreq=new XMLHttpRequest();
+	 }else if(window.ActiveXobject){
+	 try{
+	 xmlreq = new ActiveXobject("Msxm12.XMLHTTP");
+	 }catch(e1){
+	 try{
+	 xmlreq = new ActiveXobject("Miscoft.XMLHTTP");
+	 }catch(e2){
+	 }
+	 }
+	 }
+	 return xmlreq;
+	 }
+	
+	 function usernameCheck(){
+	 
+	 var username =document.getElementById("userid").value;//获得text的值
+	
+	 var request = createXmlHttpRequest();//创建request的对象
+	 request.open("post","./action/AjaxAction_checkSid.action?sid="+username);
+	 request.send();
+	 request.onreadystatechange = function(){
+	 if(request.readyState==4&request.status==200)
+	 {
+	 var value = request.responseText;
+	 if(value=="true"){
+	 document.all.unc.innerHTML="";}
+	 }else{
+	 document.all.unc.innerHTML="对不起,账号不存在！";
+	 }
+}}		 	 
+	 </script>
+</head>
+
+<body>
+<div class="login-container">
+  <div class="login">
+    <form action="login" method="post">
+      <h2>欢迎<span class="green"><strong>回来</strong></span></h2>
+      <h3><span class="green"><strong>互联网行业分析系统</strong></span></h3>
+       <input class="form-control" type="text" id="userid" name="student.id" placeholder="输入账号"  onblur="usernameCheck()">
+       <font color="red" size="-1" id="unc"></font><br>
+       <input class="form-control" type="password" id="password" name="student.password" placeholder="输入密码" >
+     
+      <button class="btn btn-hg btn-primary">
+ 登录
+</button>
+      <div class="forget-password text-left">
+        <h4><span class="red"><strong> 忘记密码？   </strong></span><a href="findPass.html">点击这里</a><span class="red"><strong>  找密码   </strong></span></h4>
+        
+      </div>
+      <div class="create-account text-left">
+      
+        <h4><span class="red"><strong>  没有账号？   </strong></span><a href="register.html">   注册      </a></h4>
+   
+      </div>
+    </form>
+  </div>
+</div>
+<!-- /container --> 
+
+<!-- Le javascript--> 
+        <script src="js/jquery-1.8.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/reset.js"></script>
+</body>
+</html>

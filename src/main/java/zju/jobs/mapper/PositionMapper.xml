@@ -21,5 +21,16 @@
     <select id="getPositionsBycity"  resultType="zju.jobs.domain.Result">  
        select DISTINCT city as indices,COUNT(*) as requirements from DataByCompany GROUP BY city ORDER BY requirements DESC;  
     </select> 
-       
+    
+      <!-- 根据城市统计人才去向 -->  
+    <select id="getEmploymentBycity"  resultType="zju.jobs.domain.Result">  
+       select  city_school as indices,rate as requirements from Employment ;  
+    </select> 
+    
+     <!-- 根据公司统计人才去向 -->  
+    <select id="getEmploymentBycompany"  resultType="zju.jobs.domain.Result">  
+       select  city_school as indices,rate as requirements from Employment ;  
+    </select> 
+    
+   
 </mapper>  

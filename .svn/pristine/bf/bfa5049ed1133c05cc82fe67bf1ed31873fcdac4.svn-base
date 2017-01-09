@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html >
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>欢迎注册</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/register.css">
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+
+    <script type="text/javascript" language="javascript">
+	//根据浏览器的不同创建不同的XMLHttpRequest
+	 function createXmlHttpRequest(){
+	 var xmlreq=false;
+	 if(window.XMLHttpRequest){
+	 xmlreq=new XMLHttpRequest();
+	 }else if(window.ActiveXobject){
+	 try{
+	 xmlreq = new ActiveXobject("Msxm12.XMLHTTP");
+	 }catch(e1){
+	 try{
+	 xmlreq = new ActiveXobject("Miscoft.XMLHTTP");
+	 }catch(e2){
+	 }
+	 }
+	 }
+	 return xmlreq;
+	 }
+	 function check_pass(){
+	        var pass = document.getElementById("password").value;
+	        var num = /[a-zA-Z]+/;
+	        var str = /[0-9_]+/;
+	        var pre = /[\-\+\=]+/;
+	        if(pass.search(pre) > -1){
+	            document.getElementById("password").value = pass.substr(0,pass.length-1)
+	        }
+	        if(pass.length == 0){
+	        	document.getElementById('passmsg').innerHTML = '密码不能为空';
+	        	
+		    }
+
+	        else if(pass.search(num) < 0 || pass.search(str) < 0 || pass.length <= 3 ){
+	            document.getElementById('passmsg').innerHTML = '密码强度：弱';
+	            document.getElementById('passmsgs').innerHTML = '';
+	        }else if(pass.length <= 6){
+	        	document.getElementById('passmsg').innerHTML = '';
+	            document.getElementById('passmsgs').innerHTML = '密码强度：中等';
+	        }else{
+	        	document.getElementById('passmsg').innerHTML = '';
+	            document.getElementById('passmsgs').innerHTML = '密码强度：强';
+	        }
+	    }
+	    
+	
+	 function usernameCheck(){
+	 
+	 var num = document.getElementById("userid").value;//获得text的值
+	
+	 var request = createXmlHttpRequest();//创建request的对象
+	 request.open("post","./action/AjaxAction_checkSid.action?sid="+num,true);
+	 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	 request.send();
+	 request.onreadystatechange = function(){
+	 if(request.readyState==4&request.status==200)
+	 {
+	 var value = request.responseText;
+	 if(value=="true"){
+	 document.all.unc1.innerHTML="";
+	 document.all.unc.innerHTML="账号不可用！";}
+	 }else{
+		 document.all.unc.innerHTML="";
+	     document.all.unc1.innerHTML="恭喜，账号可用！";
+	 }
+}}
+	 function reloadcode(obj){  
+	     var rand=new Date().getTime(); 
+         
+		 obj.src="randomCode.action?abc="+rand; 
+	 }  
+
+	 function check_repass(){
+		 var pass = document.getElementById("password").value;
+		 var pass1 = document.getElementById("repassword").value;
+		 if(pass.length == 0 || pass1.length==0){
+	        	document.getElementById('passmsg').innerHTML = '密码不能为空';
+	        	document.getElementById('passmsg3').innerHTML = '';
+	        	document.getElementById('passmsg2').innerHTML = '';
+		}else if(pass != pass1){
+			 document.getElementById('passmsg2').innerHTML = '您两次输入的密码不一致';
+			 document.getElementById('passmsg3').innerHTML = '';
+			 }else{
+				 document.getElementById('passmsg2').innerHTML = '';
+				 document.getElementById('passmsg3').innerHTML = '两次密码输入一致';
+				 }
+		 
+		 
+		 }
+	 function check_name(){
+		 var name= document.getElementById("username").value;
+		 if(name==""){
+			 document.getElementById('errorname').innerHTML = '请输入真实姓名';
+			 }else{
+				 document.getElementById('errorname').innerHTML = '';
+				 }
+		 }
+	 function check_school(){
+		 var school= document.getElementById("school").value;
+		 if(school==""){
+			 document.getElementById('errorschool').innerHTML = '学校不能为空';
+			 }else{
+				 document.getElementById('errorschool').innerHTML = '';
+			 }
+		 
+		 }
+
+	 function check_email(){
+		    var str =document.getElementById("email").value;
+	        var reg = /^[0-9a-zA-Z_]{1,12}@(163|126|qq|yahoo|gmail|sina|bjtu)\.(com|com\.cn|cn|la|edu.cn)$/;
+
+	        if(str.search(reg) < 0){
+	            document.getElementById('emailmsg').innerHTML = '无效邮箱';
+	            document.getElementById('emailmsg1').innerHTML = '';
+	        }else{
+	        	document.getElementById('emailmsg').innerHTML = '';
+	            document.getElementById('emailmsg1').innerHTML = '正确邮箱';
+	        }
+		 }
+	 function check_answer(){
+		 var str =document.getElementById("answer").value;
+		 if(str==""){
+			 document.getElementById('erroranswer').innerHTML = '答案不能为空';
+			 }else{
+				 document.getElementById('erroranswer').innerHTML = '';
+			 }
+		 }
+	
+	 </script>
+    </head>
+
+    <body>
+
+        
+
+        <div class="register-container">
+            
+                <div class="register">
+                    <form action="register" method="post">
+                        <h2>欢迎注册</h2>
+                        <h3><span class="green"><strong>互联网行业分析系统</strong></span></h3>
+                        
+                        <input class="form-control" type="text" id="userid" name="student.id" placeholder="输入账号" onblur="usernameCheck()">
+                        <font color="red" size="-1" id="unc"></font>
+                         <font color="green" size="-1" id="unc1"></font>
+                        <input class="form-control" type="password" id="password" name="student.password" placeholder="输入密码" onblur="check_pass()">
+                        <font color="red" size="-1" id="passmsg"></font>
+                        <font color="green" size="-1" id="passmsgs"></font>
+                        <input class="form-control" type="password" id="repassword" name="repassword" placeholder="确认密码" onblur="check_repass()" >
+                        <font color="red" size="-1" id="passmsg2"></font>
+                        <font color="green" size="-1" id="passmsg3"></font>
+                        <input class="form-control" type="text" id="username" name="student.name" placeholder="输入真实姓名" onblur="check_name()" >
+                        <font color="red" size="-1" id="errorname"></font>
+                        
+                        <input class="form-control" type="text" id="school" name="student.school" placeholder="输入所在学校" onblur="check_school()">
+                        <font color="red" size="-1" id="errorschool"></font>
+                        <input class="form-control" type="text" id="email" name="student.email" placeholder="输入邮箱" onblur="check_email()">
+                        <font color="red" size="-1" id="emailmsg"></font>
+                        <font color="green" size="-1" id="emailmsg1"></font>
+                        <label for="question">设置密码保护问题</label>
+                        <select name="question">
+                            <option value="q1">您的家乡是哪里？</option>
+                            <option value="q2">您最喜欢的歌曲是什么？</option>
+                            <option value="q3">您最喜欢去哪里旅游？</option>
+                            <option value="q4">您的兴趣爱好是什么？</option>                         </select>
+                       
+                         <input class="form-control" type="text" id="answer" name="student.answer" placeholder="答案" onblur="check_answer()">
+                         <font color="red" size="-1" id="erroranswer"></font>
+                  
+                        <button type="reset" class="btn btn-default btn-wide">
+                                                                                      重置
+                        </button>
+                         <a  href="login.html"  class="btn btn-default btn-wide">
+                                                                                     注册
+                        </a>
+                        
+                    </form>
+                </div>
+             
+        </div>
+        <!-- Javascript -->
+        
+        <script src="js/bootstrap.min.js"></script>
+        
+
+    </body>
+
+</html>
+

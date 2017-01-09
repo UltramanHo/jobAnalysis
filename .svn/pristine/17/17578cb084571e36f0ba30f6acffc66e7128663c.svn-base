@@ -1,0 +1,8 @@
+zju\jobs\service\impl\UserServiceImpl.class
+zju\jobs\domain\Position.class
+zju\jobs\controller\UserController.class
+zju\jobs\domain\Result.class
+zju\jobs\service\impl\RequirementServiceImpl.class
+zju\jobs\domain\User.class
+zju\jobs\service\RequirementService.class
+zju\jobs\service\UserService.class

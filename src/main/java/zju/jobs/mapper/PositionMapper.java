@@ -13,5 +13,9 @@ public interface PositionMapper {
 	List<Result> getPositionsByeducation();
 	
 	List<Result> getPositionsBycity();
+	
+	List<Result> getEmploymentBycity();
+	
+	List<Result> getEmploymentBycompany();
 
 }

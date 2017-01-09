@@ -1,0 +1,65 @@
+
+    body {
+	padding-top: 100px;
+	padding-bottom: 40px;
+	text-align: center;
+	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	color: #555;
+	font-size: 16px;
+	font-weight: 400;
+	background-color: #2C3E50;
+}
+.login-container {
+	margin: 50px auto 0 auto;
+	width: 400px;
+}
+
+
+.login form {
+  position: relative;
+  padding: 24px 23px 20px;
+  background-color: #edeff1;
+  border-radius: 6px;
+  }
+.login form .control-group {
+  position: relative;
+  margin-bottom: 6px;
+  }
+.login form .login-field {
+  font-size: 17px;
+  text-indent: 3px;
+  border-color: transparent;
+  }
+.login form .login-field:focus {
+  border-color: #1abc9c;
+  }
+.login form .login-field:focus + .login-field-icon {
+  color: #1abc9c;
+  }
+.login form .login-field-icon {
+  position: absolute;
+  top: 3px;
+  right: 15px;
+  font-size: 16px;
+  color: #bfc9ca;
+  -webkit-transition: all .25s;
+          transition: all .25s;
+  }
+.forget-link {
+  display:inline-block;
+  margin-top: 15px;
+  font-size: 15px;
+  color: #bfc9ca;
+  text-align: left;
+}
+.register-link {
+  display:inline-block;
+  margin-top: 15px;
+  font-size: 15px;
+  color: #bfc9ca;
+  text-align: right;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 2) {
+  .login {
+    }
+  }}
